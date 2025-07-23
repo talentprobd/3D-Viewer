@@ -1,6 +1,6 @@
-import * as THREE from 'https://unpkg.com/three@0.150.1/build/three.module.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.150.1/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'https://unpkg.com/three@0.150.1/examples/jsm/controls/OrbitControls.js';
+import * as THREE from './js/three.module.js';
+import { OrbitControls } from './js/OrbitControls.js';
+import { GLTFLoader } from './js/GLTFLoader.js';
 
 // MODEL LIST (can expand!)
 const models = [
