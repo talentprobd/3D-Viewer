@@ -1,41 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>3D Model Viewer</title>
+  <title>GLB Viewer</title>
   <style>
-    body {
+    html, body {
       margin: 0;
+      padding: 0;
       overflow: hidden;
       font-family: sans-serif;
     }
-    canvas {
-      display: block;
-    }
-    #controls {
+    canvas { display: block; }
+    #menu {
       position: absolute;
-      top: 10px;
-      left: 10px;
-      z-index: 10;
-      background: rgba(255, 255, 255, 0.8);
+      top: 15px;
+      left: 15px;
+      background: rgba(255, 255, 255, 0.9);
       padding: 10px;
       border-radius: 8px;
+      z-index: 10;
     }
-    button {
-      margin: 5px;
-      padding: 8px 12px;
-      font-size: 14px;
-    }
-    #modelName {
-      font-weight: bold;
+    #menu select {
+      font-size: 16px;
+      padding: 4px 8px;
     }
   </style>
 </head>
 <body>
-  <div id="controls">
-    <button id="prev">⟨ Prev</button>
-    <button id="next">Next ⟩</button>
-    <div id="modelName"></div>
+  <div id="menu">
+    <select id="modelSelector"></select>
   </div>
   <script type="module" src="viewer.js"></script>
 </body>
