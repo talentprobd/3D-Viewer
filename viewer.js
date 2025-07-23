@@ -2,19 +2,15 @@ import * as THREE from './js/three.module.js';
 import { OrbitControls } from './js/OrbitControls.js';
 import { GLTFLoader } from './js/GLTFLoader.js';
 
-// MODEL LIST (can expand!)
-const models = [
-  'models/Duck.glb',
-  'models/Car.glb',
-  'models/Robot.glb'
-];
+// Only one model
+const modelUrl = 'models/Duck.glb';
 
 let currentModel;
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0xeeeeee);
 
 // Camera
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 camera.position.set(0, 1, 5);
 
 // Renderer
@@ -46,9 +42,7 @@ function loadModel(url) {
 
 function centerModel(model) {
   const box = new THREE.Box3().setFromObject(model);
-  const size = box.getSize(new THREE.Vector3());
   const center = box.getCenter(new THREE.Vector3());
-
   controls.target.copy(center);
   controls.update();
 }
@@ -60,22 +54,12 @@ function animate() {
 }
 animate();
 
-// Populate dropdown
-const selector = document.getElementById('modelSelector');
-models.forEach(path => {
-  const option = document.createElement('option');
-  option.value = path;
-  option.textContent = path.split('/').pop();
-  selector.appendChild(option);
-});
-selector.addEventListener('change', e => loadModel(e.target.value));
+// Load the duck model immediately
+loadModel(modelUrl);
 
-// Load first model
-loadModel(models[0]);
-
-// Resize
+// Resize support
 window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth/window.innerHeight;
+  camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
